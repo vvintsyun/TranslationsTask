@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Add project</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="projectForm" class="form">
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" maxlength="40" required>
+        <mat-error *ngIf="projectForm.controls.name.invalid">{{getErrorMessage(projectForm.controls.name)}}</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="actions">
+  <button mat-raised-button [disabled]="!projectForm.valid" (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>

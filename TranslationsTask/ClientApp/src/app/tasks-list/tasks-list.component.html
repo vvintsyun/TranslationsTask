@@ -1,0 +1,24 @@
+<div class="actions-row">
+  <button class="action-button add-button" mat-raised-button (click)="addTask()">
+    <mat-icon>add</mat-icon>
+    <span>Task</span>
+  </button>
+</div>
+<p *ngIf="isLoading"><em>Loading...</em></p>
+
+<div *ngIf="!isLoading" class="mat-elevation-z8">
+  <table mat-table [dataSource]="items">
+
+    <mat-text-column name="title" [headerText]="'Title'"></mat-text-column>
+    <mat-text-column name="description" [headerText]="'Description'"></mat-text-column>
+    <mat-text-column name="deadline" [headerText]="'Deadline'"></mat-text-column>
+    <mat-text-column name="project" [headerText]="'Project'"></mat-text-column>
+    <mat-text-column name="assignee" [headerText]="'Assignee'"></mat-text-column>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="cursor: pointer" (click)="editTask(row.id)"></tr>
+
+  </table>
+
+  <div *ngIf="items && items.length === 0" class="no-data">No data</div>
+</div>
