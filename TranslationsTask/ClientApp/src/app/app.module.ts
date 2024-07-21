@@ -25,6 +25,10 @@ import { AddTaskComponent } from './tasks-list/add-task/add-task.component';
 import { TasksListComponent } from './tasks-list/tasks-list.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { TasksService } from './services/tasks.service';
+import { ChartComponent } from './chart/chart.component';
+import { NgChartsModule } from 'ng2-charts';
+import { FilterComponent } from './chart/filters/filter.component';
+import { ReportsService } from './services/reports.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,8 @@ import { TasksService } from './services/tasks.service';
     TasksListComponent,
     AddProjectComponent,
     AddTaskComponent,
+    ChartComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,6 +49,7 @@ import { TasksService } from './services/tasks.service';
       { path: '', redirectTo: 'projects', pathMatch: 'full' },
       { path: 'projects', component: ProjectsListComponent },
       { path: 'projects/:id', component: TasksListComponent },
+      { path: 'reports', component: ChartComponent },
     ]),
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -56,10 +63,12 @@ import { TasksService } from './services/tasks.service';
     MatDatepickerModule,
     MatMomentDateModule,
     MatIconModule,
+    NgChartsModule,
   ],
   providers: [
     ProjectsService,
     TasksService,
+    ReportsService,
 
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

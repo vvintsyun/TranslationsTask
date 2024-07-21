@@ -1,0 +1,23 @@
+<div class="filters-panel">
+  <app-filter class="filter"
+              [values]="projects"
+              [title]="'Projects'"
+              (selectedValues)="onFilterChanged($event, 'projects')"
+              [isMultiselect]="true"></app-filter>
+
+  <app-filter class="filter"
+              [values]="translators"
+              [title]="'Translators'"
+              (selectedValues)="onFilterChanged($event, 'translators')"
+              [isMultiselect]="true"></app-filter>
+</div>
+
+<div *ngIf="chartData && chartData.length === 0" class="no-data">No data</div>
+
+<canvas *ngIf="chartData && chartData.length > 0"
+        baseChart
+        [datasets]="chartData"
+        [options]="chartOptions"
+        [labels]="chartLabels"
+        [type]="'bar'">
+</canvas>

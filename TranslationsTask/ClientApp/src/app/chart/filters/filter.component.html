@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{title}}</mat-label>
+  <mat-select [multiple]="isMultiselect" [(value)]="selected" (selectionChange)="onSelectedChanged($event)">
+    <mat-option *ngFor="let item of values" [value]="item.key">{{item.value}}</mat-option>
+  </mat-select>
+</mat-form-field>
