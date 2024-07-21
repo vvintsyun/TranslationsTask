@@ -5,6 +5,7 @@ To setup environment:
 2) Create database Translations and move its files to <project folder>/Data (detach and attach required)
 3) Apply the database migrations (dotnet ef database update)
 4) Manually add Translator entities
+5) run `npm i` from ClientApp folder
 
  
 To run the project open it with IDE and run TranslationTask project. Front-end and back-end sides will run automatically.
